@@ -15,11 +15,11 @@ complete: int 0 or 1
 '''
 from postgres.create_tables import insert_plan, insert_task
 # dummy data
-data = [{"name": "Move out of house", "tasks":[{"description":"get storage",
+data = [{"plan_name": "Move out of house", "tasks":[{"description":"get storage",
                                                "complete": "False"},
                                               {"description":"get ispace",
                                                 "complete": "False"}]},
-        {"name": "Cook rice", "tasks":[{"description":"wash rice",
+        {"plan_name": "Cook rice", "tasks":[{"description":"wash rice",
                                                "complete": "False"},
                                               {"description":"plug in cooker",
                                                 "complete": "False"}]}]
@@ -28,7 +28,7 @@ def make_sql(data=None):
     sqls = []
     #iterate data
     for plan in data:
-        plan_name = plan['name']
+        plan_name = plan['plan_name'] # json is name
         sql_plan = """INSERT INTO plans (plan_name)
                  VALUES(%s) RETURNING plan_id;"""
 
