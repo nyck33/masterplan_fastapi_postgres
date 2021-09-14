@@ -10,6 +10,11 @@ import postgres_service
 root_path = '/'
 app = FastAPI(root_path=root_path)
 
+test_json = {"name": "Move out of house", "tasks":[{"description":"get storage",
+                                               "complete": "False"},
+                                              {"description":"get ispace",
+                                                "complete": "False"}]}
+
 @app.get("/")
 async def root():
     return {"message": "Hi"}
